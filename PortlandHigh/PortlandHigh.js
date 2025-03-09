@@ -31,11 +31,7 @@ const Stack = createStackNavigator();
 const PortlandHigh = () => {
   return (
       <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen 
-          name="HomeScreen" 
-          component={HomeScreen} 
-          options={{ headerShown: false }} 
-        />
+        
         <Stack.Screen
           name="Home"
           component={BottomTabNavigator}
@@ -61,8 +57,48 @@ const HomeScreen = () => {
         </View>
       );
 };
-
 //Fix the floating button logic ... are we even going to need it ??? Nobody knows
+
+
+const ICScreen = ({ navigation }) => {
+    return (
+      <View style={StyleSheet.absoluteFill}>
+        <WebView
+          source={{
+            uri: 'https://ic.portlandschools.org/campus/portal/students/portland.jsp',
+          }}
+          style={{ flex: 1 }} // Ensure the WebView fills the available space
+        />
+        
+      </View>
+    );
+  };
+
+  const OrangePassScreen = ({ navigation }) => {
+    return (
+      <View style={StyleSheet.absoluteFill}>
+        <WebView
+          userAgent="Mozilla/5.0 (Linux; Android 4.1.1; Galaxy Nexus Build/JRO03C) AppleWebKit/535.19 (KHTML, like Gecko) Chrome/18.0.1025.166 Mobile Safari/535.19"
+          source={{
+            uri: 'https://orangepasses.com/',
+          }}
+          style={{ flex: 1 }}
+        />
+      </View>
+    );
+  };
+
+  const TaskScreen = ({ navigation }) => {
+    return (
+      <View style={StyleSheet.absoluteFill}>
+        <WebView
+          source={{ uri: 'https://classroom.google.com/?emr=0&pli=1' }}
+          style={{ flex: 1 }} // Ensure the WebView fills the available space
+        />
+      </View>
+    );
+  };
+
 
 const Tab = createBottomTabNavigator();
 
@@ -93,13 +129,13 @@ const BottomTabNavigator = () => {
         tabBarStyle: {
           height: 100, // Increased height
           paddingBottom: 30, // Adjust padding for alignment
-          backgroundColor: 'purple', // Set the background color to purple
+          backgroundColor: 'navy', // Set the background color to purple
         },
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="IC" component={HomeScreen} />
-      <Tab.Screen name="OrangePass" component={HomeScreen} />
-      <Tab.Screen name="Task" component={HomeScreen} />
+      <Tab.Screen name="IC" component={ICScreen} />
+      <Tab.Screen name="OrangePass" component={OrangePassScreen} />
+      <Tab.Screen name="Task" component={TaskScreen} />
     </Tab.Navigator>
   );
 };
