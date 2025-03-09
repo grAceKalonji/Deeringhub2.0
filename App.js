@@ -22,7 +22,7 @@ import {
 import { WebView } from 'react-native-webview';
 import { createStackNavigator, TransitionSpecs, CardStyleInterpolators } from '@react-navigation/stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+import PortlandHigh from './PortlandHigh/PortlandHigh'; 
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useFonts } from 'expo-font';
@@ -85,6 +85,7 @@ const SchoolCodeInputScreen = ({ navigation }) => {
       navigation.navigate('Splash');
     } else if (schoolCode === 'Dance123'){
       
+      navigation.navigate('PortlandHigh');
     } else{
       Alert.alert('Invalid School Code', 'There is no school with the entered code. Get the correct school code from your school.');
     }
@@ -1527,7 +1528,6 @@ const App = () => {
           name="Home"
           component={BottomTabNavigator}
           options={{ gestureEnabled: false, headerShown: false, }}
-
         />
         <Stack.Screen
           name="MenuScreen"
@@ -1579,6 +1579,11 @@ const App = () => {
           name="newSchoolFormScreen"
           component={newSchoolFormScreen}
           options={{ headerShown: false}}
+        />
+         <Stack.Screen 
+          name="PortlandHigh" 
+          component={PortlandHigh} 
+          options={{ headerShown: false }} 
         />
       </Stack.Navigator>
     </NavigationContainer>
