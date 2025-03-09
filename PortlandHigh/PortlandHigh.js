@@ -32,12 +32,12 @@ const PortlandHigh = () => {
   return (
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen 
-          name="Home" 
+          name="HomeScreen" 
           component={HomeScreen} 
           options={{ headerShown: false }} 
         />
         <Stack.Screen
-          name="bottomNavigator"
+          name="Home"
           component={BottomTabNavigator}
           options={{ gestureEnabled: false, headerShown: false, }}
         />
@@ -53,14 +53,16 @@ const HomeScreen = () => {
             source={{ uri: 'https://phs.portlandschools.org/' }}
             style={{ flex: 1 }} // Ensure the WebView fills the available space
           />
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={() => navigation.navigate('MenuScreen')}
             style={styles.floatingButton}>
             <Ionicons name="menu" size={30} color="#FFF" />
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </View>
       );
 };
+
+//Fix the floating button logic ... are we even going to need it ??? Nobody knows
 
 const Tab = createBottomTabNavigator();
 
@@ -95,9 +97,9 @@ const BottomTabNavigator = () => {
         },
       })}>
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="IC" component={ICScreen} />
-      <Tab.Screen name="OrangePass" component={OrangePassScreen} />
-      <Tab.Screen name="Task" component={TaskScreen} />
+      <Tab.Screen name="IC" component={HomeScreen} />
+      <Tab.Screen name="OrangePass" component={HomeScreen} />
+      <Tab.Screen name="Task" component={HomeScreen} />
     </Tab.Navigator>
   );
 };
